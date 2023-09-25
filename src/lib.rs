@@ -17,7 +17,7 @@ blueprint! {
             Self { 
                 useful_tokens_vault: Vault::with_bucket(bucket),
                 xrd_tokens_vault: Vault::new(RADIX_TOKEN),
-                price_per_token,
+                price_per_token: price_per_token,
             }
             .instantiate()
             .globalize()
