@@ -22,5 +22,11 @@ blueprint! {
             .instantiate()
             .globalize()
         }
+
+        pub fn buy(&mut self, funds: Bucket) -> Bucket {
+            let purchase_amount: Decimal = funds.amount() / self.price_per_token;
+            self.xrd_tokens_vault.put(funds);
+            self.useful_tokens_vault.take(purchase_amount);
+        }
     }
 }
