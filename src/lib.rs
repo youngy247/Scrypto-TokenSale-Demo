@@ -2,7 +2,8 @@ use scrypto::prelude::*;
 
 blueprint! {
     struct TokenSale {
-        useful_tokens_value: Vault
+        useful_tokens_value: Vault,
+        xrd_tokens_vault: Vault,
     }
 
     impl TokenSale {
@@ -13,7 +14,8 @@ blueprint! {
                 .inital_supply(1000);
 
             Self { 
-                useful_tokens_vault: Vault::with_bucket(bucket)
+                useful_tokens_vault: Vault::with_bucket(bucket),
+                xrd_tokens_vault: Vault::new(RADIX_TOKEN),
             }
             .instantiate()
             .globalize()
